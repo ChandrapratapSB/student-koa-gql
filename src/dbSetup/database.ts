@@ -10,7 +10,7 @@ export const databaseSetup = async () => {
     password: "Password123",
     database: "students",
     entities: [Student],
-    logging: ["query", "error"],
+    logging: true,
     synchronize: true,
     extra: {
       trustServerCertificate: true,

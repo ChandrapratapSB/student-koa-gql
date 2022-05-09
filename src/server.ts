@@ -11,6 +11,7 @@ import { ApolloServerPluginDrainHttpServer, Context } from "apollo-server-core";
 async function bootstrap() {
   const schema = await buildSchema({
     resolvers: [__dirname + "/**/*.resolver.{ts,js}"],
+    emitSchemaFile:true,
   });
 
   const dbConnection = await databaseSetup();
@@ -23,6 +24,7 @@ async function bootstrap() {
   const server = new ApolloServer({
     schema,
     context,
+    csrfPrevention:true,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
 
