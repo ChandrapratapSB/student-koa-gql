@@ -1,0 +1,30 @@
+{
+  "name": "koa-pro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^17.0.31",
+    "apollo-server-core": "^3.7.0",
+    "apollo-server-koa": "^3.7.0",
+    "class-validator": "^0.13.2",
+    "graphql": "15.3.0",
+    "graphql-modules": "^2.0.0",
+    "http": "^0.0.1-security",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-graphql": "^0.12.0",
+    "koa-router": "^10.1.1",
+    "mssql": "^8.1.0",
+    "nodemon": "^2.0.16",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.7.0",
+    "tsconfig-paths": "^4.0.0",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.3.6",
+    "typescript": "^4.6.4"
+  },
+  "scripts": {
+    "start": "nodemon"
+  }
+}
