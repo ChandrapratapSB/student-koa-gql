@@ -2,6 +2,7 @@
   "compilerOptions": {
     "lib": ["ES2020", "DOM"],
     "declaration": true,
+    "noImplicitAny": false,
     "declarationMap": true,
     "target": "ES2019",
     "moduleResolution": "node",

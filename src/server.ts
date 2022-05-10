@@ -1,5 +1,6 @@
 import { ApolloServer } from "apollo-server-koa";
 import Koa from "koa";
+import KoaRouter from "koa-router";
 import { StudentResolver } from "student.resolver";
 import { buildSchema, buildTypeDefsAndResolvers } from "type-graphql";
 import { databaseSetup } from "../src/dbSetup/database";
@@ -20,28 +21,25 @@ async function bootstrap() {
       dbConnection,
     };
 
-    const httpServer = http.createServer();
+    const app = new Koa();
+    const router = new KoaRouter();
+    app.use(KoaBody());
+
     const server = new ApolloServer({
       schema,
       context,
-      plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+      csrfPrevention: true,
     });
 
     await server.start();
-    const app = new Koa();
-    // const router = new KoaRouter();
-    // app.use(KoaBody());
-    server.applyMiddleware({ app });
-    httpServer.on("request", app.callback());
-    await new Promise<void>((resolve) =>
-      httpServer.listen({ port: 4000 }, resolve)
-    );
-    // app.use(router.routes());
-    // app.use(router.allowedMethods());
+    server.applyMiddleware({ app , path: '/graphql' });
+    app.use(router.routes());
+    app.use(router.allowedMethods());
+    app.listen(3000);
+    
     console.log(
-      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
+      `🚀 Server ready at http://localhost:3000${server.graphqlPath}`
     );
-    // app.listen(3000);
   } catch (error) {
     console.log("Server not ready due to some issue, please check.");
     throw new Error(`${error}`);
