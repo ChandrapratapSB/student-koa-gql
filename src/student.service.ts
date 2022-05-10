@@ -11,8 +11,8 @@ export class StudentService {
     return this.studentRepository.find();
   }
 
-  async findOneBy(studentId: string): Promise<Student> {
-    return this.studentRepository.findOneBy({ id: studentId });
+  async findOneOrFail(studentId: string): Promise<Student> {
+    return this.studentRepository.findOneOrFail({id: studentId });
   }
 
   async create(studentDTO: CreateStudentInput): Promise<Student> {

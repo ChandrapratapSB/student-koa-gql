@@ -4,13 +4,13 @@ import { StudentService } from "./student.service";
 import { CreateStudentInput } from "./entities/student-input";
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
-@Resolver(of => Student)
+@Resolver(() => Student)
 export class StudentResolver {
   constructor(private studentService: StudentService) {}
 
   @Query(() => Student )
   async getStudentById(@Arg("id") id: string) : Promise<Student> {
-    return this.studentService.findOneBy(id);
+    return this.studentService.findOneOrFail(id);
   }
 
   @Query(() => [Student])
