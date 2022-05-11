@@ -1,7 +1,7 @@
 import { Injectable } from "graphql-modules";
 import { Repository } from "typeorm";
 import { Student } from "./entities/student";
-import { CreateStudentInput } from "./entities/student-input";
+import { CreateStudentInput } from "./dto/student-input";
 
 @Injectable()
 export class StudentService {

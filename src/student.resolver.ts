@@ -1,7 +1,6 @@
-// import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { Student } from "./entities/student";
 import { StudentService } from "./student.service";
-import { CreateStudentInput } from "./entities/student-input";
+import { CreateStudentInput } from "./dto/student-input";
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
 @Resolver(() => Student)
